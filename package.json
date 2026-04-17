@@ -5,6 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:firefox": "powershell -ExecutionPolicy Bypass -File ./scripts/dev-firefox.ps1",
+    "dev:stop": "powershell -ExecutionPolicy Bypass -File ./scripts/stop-vite.ps1",
     "build": "tsc && vite build",
     "preview": "vite preview"
   },
