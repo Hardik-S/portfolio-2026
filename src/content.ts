@@ -21,7 +21,6 @@ export type CaseStudy = {
   artifactImage?: string
   proofNotes: string[]
   sourceNotes: string[]
-  colors: [string, string]
 }
 
 export type HowIWorkItem = {
@@ -41,22 +40,49 @@ export type LinkItem = {
   href: string
 }
 
+export type SimulatorScenario = {
+  id: string
+  label: string
+  scenario: string
+  constraint: string
+  firstMove: string
+  artifact: string
+  tradeoff: string
+  proof: string
+  relatedCaseStudyId: string
+}
+
 export const portfolioContent = {
   person: {
     name: 'Hardik Shrestha',
-    headline: 'I help teams make messy product problems legible, testable, and shippable.',
+    roleTag: 'Product / Ops / Technical Execution',
+    headline: 'I turn messy product situations into clear next moves, real artifacts, and evidence people can trust.',
     subheadline:
-      'Computer Science + HBA, strongest where product framing, workflow design, technical execution, and written synthesis need to align.',
-    intro:
-      'The local source material tells a consistent story: I do my best work when the path is unclear, the constraints are real, and someone needs to turn scattered inputs into a system or artifact other people can trust.',
+      'Computer Science + HBA. I do my best work where product framing, workflow design, technical execution, and written synthesis need to line up fast.',
     portrait: '/artifacts/hardik-portrait.jpg',
   },
-  navigation: [
-    { label: 'Proof', href: '#proof' },
-    { label: 'Projects', href: '#projects' },
-    { label: 'How I Work', href: '#how-i-work' },
-    { label: 'Contact', href: '#contact' },
-  ] satisfies LinkItem[],
+  home: {
+    kicker: 'Anton, here is the fastest way to evaluate how I work.',
+    simulatorTitle: 'Put me in the mess.',
+    simulatorIntro:
+      'Pick a situation. I will show you how I frame it, what I would build first, what I would ignore, and how I would prove progress.',
+    featuredTitle: 'One project to open first',
+    featuredIntro:
+      'If you only open one project, start with SwimDrinkFish. It is the clearest example of how I work when the environment is changing underneath the team.',
+    contactTitle: 'If this lines up with what you need, I would value the conversation.',
+    contactBody:
+      'I am most useful on work that sits between product thinking, technical constraints, and operational follow-through.',
+  },
+  navigation: {
+    tabs: [
+      { id: 'home', label: 'Home' },
+      { id: 'workbench', label: 'Workbench' },
+    ] as const,
+    anchors: [
+      { label: 'Contact', href: '#contact' },
+      { label: 'Resume', href: '/Hardik_Shrestha_resume.pdf' },
+    ] satisfies LinkItem[],
+  },
   metrics: [
     {
       label: 'SwimDrinkFish',
@@ -73,12 +99,73 @@ export const portfolioContent = {
       value: '80% faster',
       note: 'Validation turnaround on AI-platform release work.',
     },
-    {
-      label: 'London Chess Club',
-      value: '260% growth',
-      note: 'Membership growth after governance, operations, and website changes.',
-    },
   ] satisfies Metric[],
+  simulatorScenarios: [
+    {
+      id: 'migration',
+      label: 'Backend migration',
+      scenario: 'A public-facing system is changing underneath the team, ownership is fuzzy, and the people depending on the output are not engineers.',
+      constraint:
+        'The risk is not only technical. The bigger problem is that validation rules, identifiers, and trust are all drifting at once.',
+      firstMove:
+        'Map the breakpoints: what changed, where manual work is happening, which records are unreliable, and who needs confidence right now.',
+      artifact:
+        'Within 48 hours I would build a working validation sheet or intake workflow that makes inconsistencies visible and gives the team one source of truth.',
+      tradeoff:
+        'I would not start with elegant architecture. I would start with the smallest operational layer that reduces confusion and stops bad data from spreading.',
+      proof:
+        'You know it is working when turnaround drops, fewer edge cases require hand-holding, and non-technical stakeholders can see why the system is trustworthy again.',
+      relatedCaseStudyId: 'swimdrinkfish',
+    },
+    {
+      id: 'tooling',
+      label: 'Workflow bottleneck',
+      scenario: 'An internal workflow is slowing a team down, but people describe the pain in vague terms and nobody agrees on the real bottleneck.',
+      constraint:
+        'If you automate the wrong step, you preserve the confusion and just make it faster.',
+      firstMove:
+        'Trace the work by hand first. Find where waiting, rework, and hidden dependencies pile up, then cut the loop that creates the most recurring drag.',
+      artifact:
+        'I would produce a stripped-down workflow map and a prototype or script that removes the highest-friction handoff instead of rebuilding the whole process.',
+      tradeoff:
+        'I would ignore nice-to-have reporting until the path itself is cleaner. Better process before better dashboards.',
+      proof:
+        'The signal is shorter cycle time, fewer manual checks, and less explaining required every time the workflow runs.',
+      relatedCaseStudyId: 'pointclickcare',
+    },
+    {
+      id: 'ai-product',
+      label: 'AI product idea',
+      scenario: 'A concept sounds exciting in a meeting, but it is still unclear what user behavior it improves or what a believable MVP actually is.',
+      constraint:
+        'The danger is building a polished fiction: interesting positioning, weak product behavior, and no clear learning loop.',
+      firstMove:
+        'Shrink the problem until one behavior change is testable. Define the user moment, the friction, and the smallest feature that could earn repeated use.',
+      artifact:
+        'In 48 hours I would make a lightweight prototype with one tight flow, realistic copy, and a concrete hypothesis about what the user should do next.',
+      tradeoff:
+        'I would skip speculative platform thinking. If the core loop is not credible, the strategy deck can wait.',
+      proof:
+        'The test is whether someone can use it immediately, understand the value without explanation, and give feedback on behavior instead of abstractions.',
+      relatedCaseStudyId: 'emotional-echoes',
+    },
+    {
+      id: 'student-initiative',
+      label: 'Raw initiative',
+      scenario: 'A team has energy and a concept, but it still feels too vague for other people to react to seriously.',
+      constraint:
+        'Without a tangible artifact, the conversation stays generic and the idea never gets sharper.',
+      firstMove:
+        'Clarify the hook, pick the one thing the concept must make visible, and force the team toward something people can see, try, or critique.',
+      artifact:
+        'I would build the first serious artifact fast: mockups, a prototype, a pitch object, or a simple site that makes the concept concrete.',
+      tradeoff:
+        'I would not over-polish the story before the artifact exists. Tangibility first, refinement second.',
+      proof:
+        'It starts working when feedback becomes specific, team decisions get easier, and the project shifts from idea-talk to real iteration.',
+      relatedCaseStudyId: 'picture-this',
+    },
+  ] satisfies SimulatorScenario[],
   featuredCaseStudies: [
     {
       id: 'swimdrinkfish',
@@ -96,22 +183,16 @@ export const portfolioContent = {
       result:
         'The system became faster to trust and easier to maintain, saving 20+ staff hours per week while improving reliability for technical, operations, and policy stakeholders.',
       tradeoff:
-        'The work mattered less because it was technically complex and more because it made migration risk legible for non-engineers who still depended on the output.',
-      artifactTitle: 'Operational proof',
+        'The value was not just the technical cleanup. It was making migration risk legible for non-engineers who still depended on the output.',
+      artifactTitle: 'Why open this first',
       artifactCaption:
-        'The case is documented through the resume, CCV, and tailored application materials that all converge on the same migration story and outcome.',
+        'This is the clearest example of how I handle ambiguous systems, mixed stakeholders, changing technical ground, and the need for a concrete operating fix.',
       proofNotes: [
-        'Resume master and CCV both cite 20+ staff hours per week saved.',
-        'Multiple local application answers reframe this as coordination under migration pressure, not just ETL work.',
-        'The strongest local wording stresses backend transition, documentation, and stakeholder trust.',
+        'Workflow redesign during a backend transition.',
+        '3,000+ beaches reconciled across inconsistent records.',
+        '20+ staff hours per week saved through better validation and ingestion.',
       ],
-      sourceNotes: [
-        'resume_master.md',
-        'ccv_master.md',
-        '00 - Resume/completed/_jobflow/j1 output.txt',
-        '00 - Resume/completed/_jobflow/j3 output.txt',
-      ],
-      colors: ['#48b7ff', '#2dd4bf'],
+      sourceNotes: ['Resume', 'CCV', 'Application materials'],
     },
     {
       id: 'pointclickcare',
@@ -125,25 +206,20 @@ export const portfolioContent = {
       challenge:
         'The team needed a cleaner authentication experience and a migration path that could handle much higher user volume without forcing a rebuild every time a new service was added.',
       work:
-        'I built on an Azure-based SPA IAM stack with Java, React, Vue, JavaScript, and Postman, and contributed to bulk-migration capability for higher-volume user handling.',
+        'I worked on an Azure-based IAM stack, contributed to product-facing implementation work, and helped support bulk migration capability for much higher user volume.',
       result:
-        'The migration path could process 100x more users simultaneously and saved recurring internal effort, while giving me direct experience on the product-delivery side of engineering work.',
+        'The migration path could process 100x more users simultaneously and reduced recurring internal effort while staying usable for administrators.',
       tradeoff:
-        'Its value is direct experience inside real implementation constraints, where shipping quality mattered as much as technical correctness.',
+        'Its value is direct shipping experience inside real constraints, where product credibility mattered as much as technical correctness.',
       artifactTitle: 'Implementation signal',
       artifactCaption:
-        'This case is supported by resume and CCV records describing the IAM stack, migration scope, and delivery impact.',
+        'This is a practical case of shipping inside an established product environment rather than only framing an idea from scratch.',
       proofNotes: [
-        'CCV records Azure, Java, React, Vue, JS, and Postman on the IAM work.',
-        'Resume variants consistently mention 100x bulk migration capability.',
-        'This is the cleanest local evidence that I have shipped product-facing software, not just process work.',
+        '100x simultaneous migration capability.',
+        'Hands-on work across Azure, Java, React, Vue, JavaScript, and Postman.',
+        'Clear example of product-adjacent engineering delivery.',
       ],
-      sourceNotes: [
-        'public/Hardik_Shrestha_resume.pdf',
-        'resume_master.md',
-        'ccv_master.md',
-      ],
-      colors: ['#9b8cff', '#5ea7ff'],
+      sourceNotes: ['Resume', 'CCV'],
     },
     {
       id: 'emotional-echoes',
@@ -153,28 +229,24 @@ export const portfolioContent = {
       role: 'Course concept turned local MVP',
       timeline: 'Academic project',
       summary:
-        'Designed and built a mindfulness-tool MVP around mood logging, timeline reflection, AI-style insights, and guided meditation recommendations.',
+        'Designed and built a mindfulness-tool MVP around mood logging, reflection, lightweight AI-style insights, and guided recommendations.',
       challenge:
         'Reflective products often ask too much initiative from the user. The more friction there is to logging and reflection, the easier it is to abandon the practice.',
       work:
-        'I explored a Headspace-adjacent concept, built frontend MVP versions locally, and defined features like mood tracking, reminders, insights, and meditation recommendations using browser storage rather than a backend.',
+        'I defined the behavior gap, shaped an MVP around lighter reflection, and built local frontend versions to test mood tracking, reminders, insights, and recommendations.',
       result:
-        'The project is useful not because it proves production AI, but because it shows structured product thinking: identify a behavior gap, make the interaction lighter, and test the concept as an MVP instead of a pitch deck.',
+        'The project became a testable product concept rather than a pitch-only idea, which is the more useful threshold for learning.',
       tradeoff:
-        'The strength of the case is straightforward: it moved from concept to prototype, with enough product definition to make the idea testable.',
-      artifactTitle: 'Local repo evidence',
+        'The point is not production AI. The point is disciplined MVP thinking around one believable behavior change.',
+      artifactTitle: 'Prototype signal',
       artifactCaption:
-        'Two local Emotional Echoes repositories document the feature set, user flow, and MVP implementation details. That makes this case more credible than a pure concept summary.',
+        'This shows product framing and prototype execution meeting in the same project rather than living in separate decks and demos.',
       proofNotes: [
-        'README documents mood tracking, timeline visualization, AI-style insights, reminders, and guided meditations.',
-        'One repo is a frontend-only React MVP; another frames the concept as a Headspace extension.',
-        'The local source supports UI/UX and product-framing claims better than inflated strategic hindsight.',
+        'Mood logging and reflection timeline built into the MVP.',
+        'AI-style insights used as a product interaction, not a vague promise.',
+        'Concept moved from positioning into a working flow.',
       ],
-      sourceNotes: [
-        'GitHub/EmotionalEchoes/README.md',
-        'GitHub/EmotionalEchoesY/README.md',
-      ],
-      colors: ['#ff9b6a', '#ff6f91'],
+      sourceNotes: ['Local MVP repo', 'Project README'],
     },
     {
       id: 'picture-this',
@@ -190,41 +262,36 @@ export const portfolioContent = {
       work:
         'I led a six-person team through concept framing, prototype development, and business-plan work, with mockups and a lightweight website prototype as the concrete outputs.',
       result:
-        'The concept moved from vague idea to tangible artifact, which is often the actual inflection point in student product work.',
+        'The concept moved from vague idea to tangible artifact, which is often the real inflection point in student product work.',
       tradeoff:
-        'This is not my most technical work, but it is the cleanest visual proof that I can move early concepts toward something testable and discussable.',
+        'This is not the most technical case here, but it is strong evidence that I can move a fuzzy concept into something testable and discussable.',
       artifactTitle: 'Prototype artifact',
       artifactCaption:
-        'Local files include the box mockup, card mockup, written business plan, and website prototype. That is enough real material to treat this as an artifact-backed case study.',
+        'The visual prototype mattered because it gave the team and outside readers something concrete to react to instead of a generic concept summary.',
       artifactImage: '/artifacts/picture-this-box.png',
       proofNotes: [
-        'Local NVP folder includes box mockup, card mockup, written business plan, and static website prototype.',
-        'This is one of the strongest non-generic visuals available locally.',
-        'The artifact makes the work easier to believe than a text-only claim about "product storytelling."',
+        'Six-person team led from framing into prototype work.',
+        'Mockups, business plan, and website prototype all existed as real artifacts.',
+        'Strong example of turning a vague initiative into a tangible object.',
       ],
-      sourceNotes: [
-        '02 - Ivey/07 - NVP/box-mockup.png',
-        '02 - Ivey/07 - NVP/card-mockup.png',
-        '02 - Ivey/07 - NVP/Deliverable #3a_ DRAFT Written Business Plan.pdf',
-      ],
-      colors: ['#74f2ce', '#f6d860'],
+      sourceNotes: ['Box mockup', 'Card mockup', 'Written plan'],
     },
   ] satisfies CaseStudy[],
   howIWork: [
     {
       title: 'Frame',
       body:
-        'Start by making the actual constraint visible: what is changing, what is failing, who depends on it, and what cannot break.',
+        'Make the actual constraint visible fast: what is changing, what is failing, who depends on it, and what cannot break.',
     },
     {
       title: 'Build',
       body:
-        'Move quickly toward the smallest artifact that creates shared understanding: a workflow, a prototype, a migration path, a brief, or a testable concept.',
+        'Move toward the smallest artifact that creates shared understanding: a workflow, prototype, migration path, brief, or testable concept.',
     },
     {
       title: 'Prove',
       body:
-        'Anchor the story in something concrete: time saved, throughput improved, adoption made easier, or a clearer decision made possible.',
+        'Anchor the story in something real: time saved, throughput improved, adoption made easier, or a clearer decision made possible.',
     },
   ] satisfies HowIWorkItem[],
   experience: [
@@ -240,7 +307,7 @@ export const portfolioContent = {
       title: 'LoblawTank winner and PM event organizer',
       org: 'Loblaw / Ivey',
       body:
-        'Built the case for a FlashFood x Too Good To Go concept and helped organize a PM fundamentals and Python in Finance event with 40 in-person and 220+ online attendees.',
+        'Built the case for a FlashFood x Too Good To Go concept and helped organize PM and Python events with 40 in-person and 220+ online attendees.',
     },
     {
       date: '2022 to 2023',
@@ -254,7 +321,7 @@ export const portfolioContent = {
       title: 'Chess club operations and capacity planning',
       org: 'London Chess Club',
       body:
-        'Restructured governance, launched a website, modernized operations, and ran a 128-player tournament across two days with venue, prizes, scheduling, and registration logistics.',
+        'Restructured governance, launched a website, modernized operations, and ran a 128-player tournament across two days.',
     },
   ] satisfies ExperienceItem[],
   links: [
@@ -263,4 +330,4 @@ export const portfolioContent = {
     { label: 'LinkedIn', href: 'https://linkedin.com/in/hardik-shres/' },
     { label: 'Email', href: 'mailto:hshrestha.hba2026@ivey.ca' },
   ] satisfies LinkItem[],
-}
+} as const

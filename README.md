@@ -9,6 +9,20 @@ npm install
 npm run dev
 ```
 
+Open the site in Firefox and reuse an existing healthy local server if one is already running:
+
+```bash
+npm run dev:firefox
+```
+
+This launcher reads `vite.config.ts` and opens the correct local base path, not just `/`.
+
+Stop repo-local Vite listeners if they have piled up:
+
+```bash
+npm run dev:stop
+```
+
 ## Build
 
 ```bash
@@ -26,7 +40,9 @@ This is not a generic portfolio. The site should position Hardik as:
 
 ## Key Files
 
+- [AGENTS.md](C:/Users/hshre/OneDrive/Documents/42%20-%20Agents/Codex/Portfolio/AGENTS.md)
 - [docs/portfolio-strategy.md](C:/Users/hshre/OneDrive/Documents/42%20-%20Agents/Codex/Portfolio/docs/portfolio-strategy.md)
 - [docs/build-tonight.md](C:/Users/hshre/OneDrive/Documents/42%20-%20Agents/Codex/Portfolio/docs/build-tonight.md)
+- [docs/agent-guardrails.md](C:/Users/hshre/OneDrive/Documents/42%20-%20Agents/Codex/Portfolio/docs/agent-guardrails.md)
 - [src/content.ts](C:/Users/hshre/OneDrive/Documents/42%20-%20Agents/Codex/Portfolio/src/content.ts)
 - [src/App.tsx](C:/Users/hshre/OneDrive/Documents/42%20-%20Agents/Codex/Portfolio/src/App.tsx)

@@ -1,0 +1,33 @@
+name: PR Checklist
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened]
+
+permissions:
+  pull-requests: read
+
+jobs:
+  verify-pr-body:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Validate PR template sections
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const body = context.payload.pull_request?.body || "";
+            const requiredSections = [
+              "## Summary",
+              "## Why",
+              "## Verification",
+              "## Visual Notes",
+              "## Follow-Ups"
+            ];
+
+            const missingSections = requiredSections.filter((section) => !body.includes(section));
+
+            if (missingSections.length > 0) {
+              core.setFailed(
+                `PR body is missing required sections: ${missingSections.join(", ")}. Use .github/pull_request_template.md.`
+              );
+            }
