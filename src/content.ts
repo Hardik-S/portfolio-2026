@@ -62,7 +62,6 @@ export const portfolioContent = {
     portrait: '/artifacts/hardik-portrait.jpg',
   },
   home: {
-    kicker: 'Anton, here is the fastest way to evaluate how I work.',
     simulatorTitle: 'Put me in the mess.',
     simulatorIntro:
       'Pick a situation. I will show you how I frame it, what I would build first, what I would ignore, and how I would prove progress.',

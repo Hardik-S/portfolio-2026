@@ -111,8 +111,10 @@ function App() {
           <>
             <section className="hero hero-home">
               <div className="hero-copy">
-                <p className="eyebrow">{home.kicker}</p>
-                <h1>{person.headline}</h1>
+                <h1>
+                  I turn messy product situations into <span className="hero-highlight">clear next moves</span>, real
+                  artifacts, and evidence people can trust.
+                </h1>
                 <p className="hero-support">{person.subheadline}</p>
 
                 <div className="hero-actions">
