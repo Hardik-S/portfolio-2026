@@ -40,9 +40,9 @@ This is not a generic portfolio. The site should position Hardik as:
 
 ## Key Files
 
-- [AGENTS.md](C:/Users/hshre/OneDrive/Documents/42%20-%20Agents/Codex/Portfolio/AGENTS.md)
-- [docs/portfolio-strategy.md](C:/Users/hshre/OneDrive/Documents/42%20-%20Agents/Codex/Portfolio/docs/portfolio-strategy.md)
-- [docs/build-tonight.md](C:/Users/hshre/OneDrive/Documents/42%20-%20Agents/Codex/Portfolio/docs/build-tonight.md)
-- [docs/agent-guardrails.md](C:/Users/hshre/OneDrive/Documents/42%20-%20Agents/Codex/Portfolio/docs/agent-guardrails.md)
-- [src/content.ts](C:/Users/hshre/OneDrive/Documents/42%20-%20Agents/Codex/Portfolio/src/content.ts)
-- [src/App.tsx](C:/Users/hshre/OneDrive/Documents/42%20-%20Agents/Codex/Portfolio/src/App.tsx)
+- [AGENTS.md](AGENTS.md)
+- [docs/portfolio-strategy.md](docs/portfolio-strategy.md)
+- [docs/build-tonight.md](docs/build-tonight.md)
+- [docs/agent-guardrails.md](docs/agent-guardrails.md)
+- [src/content.ts](src/content.ts)
+- [src/App.tsx](src/App.tsx)
